@@ -1,0 +1,49 @@
+name: Bug report
+description: Report a problem with installation, VR, or gameplay.
+title: "[Bug]: "
+body:
+  - type: input
+    id: version
+    attributes:
+      label: BC2VR version
+      description: Copy the version shown in the launcher.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where does it happen?
+      options:
+        - Installation or updating
+        - Launching or menus
+        - Weapons, grips, or reloading
+        - Vehicles
+        - Graphics or performance
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe what went wrong and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How can we reproduce it?
+      description: Include the mission, weapon or vehicle, and the actions leading up to the problem. Mention whether it happens every time.
+    validations:
+      required: true
+  - type: input
+    id: setup
+    attributes:
+      label: Headset and PC setup
+      description: Headset, connection method, VR runtime, and GPU, if known.
+      placeholder: "Example: Quest 3, Steam Link, SteamVR, RTX 4070"
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Logs, screenshots, or video
+      description: Attach relevant logs from the launcher's Open logs button or a short clip. For a longer video, include the timestamp of the problem.

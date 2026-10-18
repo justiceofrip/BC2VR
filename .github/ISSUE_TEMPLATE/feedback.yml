@@ -1,0 +1,21 @@
+name: Feedback or suggestion
+description: Tell us what feels good, what needs work, or what you would like next.
+title: "[Feedback]: "
+body:
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Your feedback
+      description: A short description is enough. Include the weapon or mission if it helps explain your experience.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: BC2VR version
+      description: The version shown in the launcher, if available.
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Optional screenshot or video
+      description: You can attach an example here.
