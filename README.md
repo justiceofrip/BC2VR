@@ -1,5 +1,11 @@
 # BC2VR — Singleplayer Pre-alpha
 
+> **Campaign blocked — not ready for a campaign playthrough.** The opening knife
+> can fail to damage enemies and prevent first-mission progression. A new test
+> also crashed. Versions 0.1.5–0.1.7 share this unresolved gameplay build;
+> 0.1.6/0.1.7 address launcher issues only. Further gameplay release promotion is
+> blocked until actual knife damage, opening progression and crash recovery are verified.
+
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
 **0.1.7 / checkpoint 426 is an experimental pre-alpha.** Opening-knife combat is unresolved and can block progress in the first mission. Crashes after deaths/reloads also remain unresolved. A complete campaign and every weapon have not been verified. Multiplayer is unsupported.
