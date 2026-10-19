@@ -2,14 +2,14 @@
 
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
-**0.1.6 / checkpoint 426 is an experimental pre-alpha.** Opening-knife combat is unresolved and can block progress in the first mission. Crashes after deaths/reloads also remain unresolved. A complete campaign and every weapon have not been verified. Multiplayer is unsupported.
+**0.1.7 / checkpoint 426 is an experimental pre-alpha.** Opening-knife combat is unresolved and can block progress in the first mission. Crashes after deaths/reloads also remain unresolved. A complete campaign and every weapon have not been verified. Multiplayer is unsupported.
 
 ## Install and play
 
 You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
 
-1. Download **BC2VR-Setup-0.1.6.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.6-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
+1. Download **BC2VR-Setup-0.1.7.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-0.1.7-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
 3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
 4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
 
@@ -27,7 +27,7 @@ Move with the left stick, snap turn with the right stick, fire with the right tr
 
 Close BC2 before selecting **Check for updates** and **Install update**. Keep **Include pre-alpha hotfixes** enabled. Settings and one previous package are retained; **Roll back** selects that previous version.
 
-**If 0.1.5 blocks your update because of free space:** download the new Setup, run **Install.cmd**, and choose your **existing launcher folder**. Your settings are preserved.
+**If the launcher reports a damaged package or an older updater cannot continue:** download the new Setup, run **Install.cmd**, and choose your **existing launcher folder containing `active.json`**. Repair replaces a damaged copy only after the replacement is fully verified, preserving your settings and a verified previous version.
 
 ## What to expect
 
@@ -35,7 +35,7 @@ The mod includes native stereo, tracked weapons and support hands, roomscale mov
 
 The opening knife can render and start an attack, but repeat stabbing, enemy damage and mission progression are not verified. Some players may be unable to continue past the opening combat. The death/reload crash has no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
 
-The native game binaries are unchanged from 0.1.5. The 0.1.6 package passed 28 package checks and 51 launcher checks. Fresh equipment/audio preparation and cache validation passed using packaged Python and a verified local decoder. The packaged launcher also rejected an unverified executable before starting the game. These checks do not establish headset or campaign playability.
+The native VR binaries remain unchanged from 0.1.5 and 0.1.6. This hotfix targets package-identity recovery, useful asset-preparation errors and verification of the individual game resources required by local caches. Matching required resource contents can establish asset compatibility independently of unrelated archive differences; it does not establish native executable or EA-store compatibility. The exact 0.1.7 package passed 44 package checks and 51 launcher checks, including recovery and same-version repair. Fresh preparation with packaged Python and a verified local decoder passed: all six equipment/audio outputs match the verified earlier outputs byte for byte. No game or headset session was started by these checks. They do not establish headset or campaign playability.
 
 ## Feedback
 
