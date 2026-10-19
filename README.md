@@ -1,21 +1,19 @@
 # BC2VR — Singleplayer Pre-alpha
 
-> **Campaign blocked — not ready for a campaign playthrough.** The opening knife
-> can fail to damage enemies and prevent first-mission progression. A new test
-> also crashed. The 0.1.8 startup hotfix retains these unresolved gameplay limitations.
-> Further gameplay release promotion is
-> blocked until actual knife damage, opening progression and crash recovery are verified.
+> **Experimental pre-alpha. Death/reload crashes remain unresolved.** A complete
+> campaign, every knife mode and real-headset handling of the new knife correction
+> have not been verified. Multiplayer is unsupported.
 
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
-**0.1.8 / checkpoint 426 is an experimental pre-alpha.** Opening-knife combat is unresolved and can block progress in the first mission. Crashes after deaths/reloads also remain unresolved. A complete campaign and every weapon have not been verified. Multiplayer is unsupported.
+**0.1.9 fixes two checks that rejected valid opening-mission knife stabs.** In the actual game, an emulated tracked-controller jab delivered native enemy damage and the game displayed “Two down. About a thousand to go.” A later jab completed and rearmed normally. Human headset handling and a complete campaign playthrough remain unverified.
 
 ## Install and play
 
 You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
 
-1. Download **BC2VR-Setup-0.1.8.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.8-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
+1. Download **BC2VR-Setup-0.1.9.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-0.1.9-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
 3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
 4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
 
@@ -39,11 +37,11 @@ Close BC2 before selecting **Check for updates** and **Install update**. Keep **
 
 The mod includes native stereo, tracked weapons and support hands, roomscale movement, physical equipment handling and manual reloads for supported weapons. The opening cloud correction has passed a headset check. Checkpoint 426 adds measured Nambu100 grip/aim data and native manual-magazine evidence.
 
-The opening knife can render and start an attack, but repeat stabbing, enemy damage and mission progression are not verified. Some players may be unable to continue past the opening combat. The death/reload crash has no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
+Death/reload crashes have no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
 
-The 0.1.8 hotfix removes a development-machine drive restriction from the native audio-cache readers. A tester's valid X: installation was rejected during VR startup; both readers now accept validated absolute local paths on the player's selected drive. Required audio hashes and formats remain checked. Startup and saved diagnostics also show the underlying native failure reason when available, rather than only `probe_exit:20`.
+The included 0.1.8 startup fix removes a development-machine drive restriction from the native audio-cache readers. A tester's valid X: installation was rejected during VR startup; both readers now accept validated absolute local paths on the player's selected drive. Required audio hashes and formats remain checked. Startup and saved diagnostics also show the underlying native failure reason when available, rather than only `probe_exit:20`.
 
-This is a startup correction, not a knife or campaign fix. Installer/update tests simulate different folder layouts and runtime selections; they do not emulate another GPU, headset connection or store executable. Actual EA/VDXR headset rendering remains unverified. The previous package-repair and per-resource preparation checks remain included.
+Installer/update tests simulate different folder layouts and runtime selections; they do not emulate another GPU, headset connection or store executable. Actual EA/VDXR headset rendering remains unverified. The previous package-repair and per-resource preparation checks remain included.
 
 ## Feedback
 
