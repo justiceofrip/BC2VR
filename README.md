@@ -1,19 +1,19 @@
 # BC2VR — Singleplayer Pre-alpha
 
-> **Experimental pre-alpha. Death/reload crashes remain unresolved.** A complete
-> campaign, every knife mode and real-headset handling of the new knife correction
-> have not been verified. Multiplayer is unsupported.
+> **Experimental pre-alpha. Knife interaction has failed current headset testing,
+> and death/reload crashes remain unresolved.** Opening-guard progression and a
+> complete campaign have not passed acceptance. Multiplayer is unsupported.
 
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
-**0.1.10 fixes the missing menu pointer at 4:3 resolutions and a startup check that shut VR down while waiting in the main menu.** It also explains how to retry when BC2 remains open after a failed session. The previous knife and installation-drive corrections remain included.
+**0.1.11 fixes asset preparation when a dedicated `BC2VR-Launcher` folder is inside the game installation.** Native binaries and gameplay remain exactly those of 0.1.10. The cache-path checks and fresh-install, update and rollback checks passed.
 
 ## Install and play
 
 You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
 
-1. Download **BC2VR-Setup-0.1.10.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.10-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
+1. Download **BC2VR-Setup-0.1.11.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-0.1.11-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
 3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
 4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
 
@@ -27,6 +27,8 @@ If the Direct3D 11 check fails, close BC2 and select `DxVersion=11` in its `Docu
 
 If VR stops while BC2 remains open, select **Restart BC2 before launch**, or close BC2 normally and launch again. Wait for any cleanup message to finish. **You do not need to delete or reinstall BC2VR.** The desktop game resolution does not need to be 16:9 for menu pointing.
 
+If 0.1.10 reports **“Generated assets must not be written into the game installation”**, the launcher may be installed below the game folder. Update to 0.1.11, which permits its dedicated managed cache there. Installing the launcher directly into the game root or its stock `Dist`/`Package` folders remains unsupported. **You do not need to reinstall the game.**
+
 ## Controls and updates
 
 Move with the left stick, snap turn with the right stick, fire with the right trigger, and use grips for supported weapon handling. Hold both stick clicks for one second to recenter. Open the pause menu with the left menu button; X+Y held for half a second is the fallback when the runtime reserves that button.
@@ -35,11 +37,13 @@ Close BC2 before selecting **Check for updates** and **Install update**. Keep **
 
 **If the launcher reports a damaged package or an older updater cannot continue:** download the new Setup, run **Install.cmd**, and choose your **existing launcher folder containing `active.json`**. Repair replaces a damaged copy only after the replacement is fully verified, preserving your settings and a verified previous version.
 
+The 0.1.11 update preserves settings and a previous package for rollback. The changed preparation recipe may require a new local asset cache on the next launch.
+
 ## What to expect
 
 The mod includes native stereo, tracked weapons and support hands, roomscale movement, physical equipment handling and manual reloads for supported weapons. The opening cloud correction has passed a headset check. Checkpoint 426 adds measured Nambu100 grip/aim data and native manual-magazine evidence.
 
-The included 0.1.9 knife correction passed an actual-game test with emulated controller input: a jab delivered native enemy damage, and a later jab completed and rearmed. That is not a complete first-mission or human-headset acceptance test.
+Knife interaction has failed current headset testing. Earlier damage checks with emulated controller input did not establish working headset knife handling or opening-mission progression. The 0.1.11 cache fix does not change native gameplay or resolve those failures.
 
 Death/reload crashes have no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
 
