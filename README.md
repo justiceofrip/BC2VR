@@ -6,14 +6,14 @@
 
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
-**0.1.9 fixes two checks that rejected valid opening-mission knife stabs.** In the actual game, an emulated tracked-controller jab delivered native enemy damage and the game displayed “Two down. About a thousand to go.” A later jab completed and rearmed normally. Human headset handling and a complete campaign playthrough remain unverified.
+**0.1.10 fixes the missing menu pointer at 4:3 resolutions and a startup check that shut VR down while waiting in the main menu.** It also explains how to retry when BC2 remains open after a failed session. The previous knife and installation-drive corrections remain included.
 
 ## Install and play
 
 You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
 
-1. Download **BC2VR-Setup-0.1.9.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.9-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
+1. Download **BC2VR-Setup-0.1.10.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-0.1.10-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
 3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
 4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
 
@@ -24,6 +24,8 @@ First launch prepares equipment and audio caches from your installed game. Pytho
 The chosen game path is shown above Launch. If settings cannot be read, use the offered recovery action; the original file is backed up before repair or reset.
 
 If the Direct3D 11 check fails, close BC2 and select `DxVersion=11` in its `Documents/BFBC2/settings.ini`, then retry. Keep the headset connected while the game reaches its main menu. Startup reports progress and waits for native VR input telemetry; it does not claim success merely because the game process opened. Use **Report feedback → Save diagnostics** when a check fails.
+
+If VR stops while BC2 remains open, select **Restart BC2 before launch**, or close BC2 normally and launch again. Wait for any cleanup message to finish. **You do not need to delete or reinstall BC2VR.** The desktop game resolution does not need to be 16:9 for menu pointing.
 
 ## Controls and updates
 
@@ -36,6 +38,8 @@ Close BC2 before selecting **Check for updates** and **Install update**. Keep **
 ## What to expect
 
 The mod includes native stereo, tracked weapons and support hands, roomscale movement, physical equipment handling and manual reloads for supported weapons. The opening cloud correction has passed a headset check. Checkpoint 426 adds measured Nambu100 grip/aim data and native manual-magazine evidence.
+
+The included 0.1.9 knife correction passed an actual-game test with emulated controller input: a jab delivered native enemy damage, and a later jab completed and rearmed. That is not a complete first-mission or human-headset acceptance test.
 
 Death/reload crashes have no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
 
