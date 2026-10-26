@@ -7,7 +7,7 @@
 
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
-**0.1.13 improves launcher startup diagnostics and saved feedback.** It distinguishes a confirmed game exit from a failed process-identity/access check and includes window-activation logs in the diagnostics bundle. This is a launcher-only update: the VR/gameplay binaries and asset-cache recipe are identical to 0.1.12. It does not yet fix the reported unverified Steam executable or establish the cause of the separate Pimax startup failure.
+**0.1.14 fixes the Save diagnostics button.** It could close the feedback dialog without exporting a ZIP. After updating and reopening the launcher, choose **Report feedback → Save diagnostics for review**; the ZIP's folder opens automatically. The 0.1.13 startup diagnostics remain included. VR/gameplay binaries and the asset-cache recipe are unchanged from 0.1.12. This update does not claim to fix the reported native-input startup timeout or the separate unverified Steam executable.
 
 The 0.1.12 knife corrections, opening story-text display and toggle crouch remain included. That version passed an actual-game check using emulated controllers through the opening guards to **Reach Trenches**, with all three opening story cards captured. Full-campaign and headset performance acceptance remain separate.
 
@@ -15,8 +15,8 @@ The 0.1.12 knife corrections, opening story-text display and toggle crouch remai
 
 You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
 
-1. Download **BC2VR-Setup-0.1.13.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.13-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
+1. Download **BC2VR-Setup-0.1.14.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-0.1.14-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
 3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
 4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
 
@@ -30,7 +30,7 @@ If the Direct3D 11 check fails, close BC2 and select `DxVersion=11` in its `Docu
 
 If VR stops while BC2 remains open, select **Restart BC2 before launch**, or close BC2 normally and launch again. Wait for any cleanup message to finish. **You do not need to delete or reinstall BC2VR.** The desktop game resolution does not need to be 16:9 for menu pointing.
 
-If startup fails after window activation, use **Report feedback → Save diagnostics** in 0.1.13 and attach the reviewed ZIP. The old “Original BC2 exited” message could also mean the launcher could not verify the original process; it did not prove a crash or a headset incompatibility. An “unverified executable” message is a different check: support for that exact game build still needs verification. Switching headset runtimes does not resolve an executable-verification failure.
+If startup fails after window activation, use **Report feedback → Save diagnostics for review** in 0.1.14 or newer and attach the reviewed ZIP. The old “Original BC2 exited” message could also mean the launcher could not verify the original process; it did not prove a crash or a headset incompatibility. An “unverified executable” message is a different check: support for that exact game build still needs verification. Switching headset runtimes does not resolve an executable-verification failure.
 
 If 0.1.10 reports **“Generated assets must not be written into the game installation”**, the launcher may be installed below the game folder. The fix introduced in 0.1.11 remains included and permits its dedicated managed cache there. Installing the launcher directly into the game root or its stock `Dist`/`Package` folders remains unsupported. **You do not need to reinstall the game.**
 
@@ -42,7 +42,7 @@ Close BC2 before selecting **Check for updates** and **Install update**. Keep **
 
 **If the launcher reports a damaged package or an older updater cannot continue:** download the new Setup, run **Install.cmd**, and choose your **existing launcher folder containing `active.json`**. Repair replaces a damaged copy only after the replacement is fully verified, preserving your settings and a verified previous version.
 
-Updating from 0.1.12 preserves settings and retains 0.1.12 for rollback. The unchanged asset recipe reuses your existing valid cache.
+Updating from 0.1.13 preserves settings and retains 0.1.13 for rollback. The unchanged asset recipe reuses your existing valid cache.
 
 ## What to expect
 
@@ -60,6 +60,6 @@ Installer/update tests simulate different folder layouts and runtime selections;
 
 Use **Report feedback** in the launcher or [open an issue](https://github.com/justiceofrip/BC2VR/issues/new/choose). Include your headset/connection, version, mission, weapon and reproduction steps.
 
-The launcher can prepare a small diagnostics ZIP from bounded text logs and build details. Review **Report.txt** before attaching it yourself. Nothing uploads automatically; game assets, settings, screenshots and memory dumps are excluded. Short videos with timestamps are useful for visual or interaction problems.
+Select **Report feedback → Save diagnostics for review** to create a small diagnostics ZIP from bounded text logs and build details. Explorer opens the folder; alternatively, select **Open logs → feedback** and find **BC2VR-diagnostics.zip**. Review **Report.txt** before attaching it yourself. Nothing uploads automatically; game assets, settings, screenshots and memory dumps are excluded. Short videos with timestamps are useful for visual or interaction problems.
 
 This is an unofficial community mod. Framework source and development are in [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR).
