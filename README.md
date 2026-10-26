@@ -1,13 +1,13 @@
 # BC2VR — Singleplayer Pre-alpha
 
-> **Experimental pre-alpha. The new knife fixes still need headset confirmation,
-> and death/reload crashes remain unresolved.** Opening-encounter progression
-> passed an actual-game check using emulated controller input. A complete
-> campaign has not passed acceptance. Multiplayer is unsupported.
+> **Experimental pre-alpha. Vehicle, destruction-rendering and death/reload
+> issues remain unresolved.** Testers have confirmed opening-encounter progression,
+> knife use and manual reloads in a headset. A complete campaign has not passed
+> acceptance. Multiplayer is unsupported.
 
 An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
 
-**0.1.14 fixes the Save diagnostics button.** It could close the feedback dialog without exporting a ZIP. After updating and reopening the launcher, choose **Report feedback → Save diagnostics for review**; the ZIP's folder opens automatically. The 0.1.13 startup diagnostics remain included. VR/gameplay binaries and the asset-cache recipe are unchanged from 0.1.12. This update does not claim to fix the reported native-input startup timeout or the separate unverified Steam executable.
+**0.1.15 adds an experimental Steam option and fixes a live-game verification failure.** The launcher could save an empty executable path at startup and then reject the running game; it now recovers that path from the original Windows process handle. The Steam option targets the executable reported by testers and retains native interface checks. Actual Steam gameplay and its complete weapon coverage remain unverified. The diagnostics-button fix is included; VR/gameplay binaries are unchanged.
 
 The 0.1.12 knife corrections, opening story-text display and toggle crouch remain included. That version passed an actual-game check using emulated controllers through the opening guards to **Reach Trenches**, with all three opening story cards captured. Full-campaign and headset performance acceptance remain separate.
 
@@ -15,8 +15,8 @@ The 0.1.12 knife corrections, opening story-text display and toggle crouch remai
 
 You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
 
-1. Download **BC2VR-Setup-0.1.14.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.14-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
+1. Download **BC2VR-Setup-0.1.15.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-0.1.15-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
 3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
 4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
 
@@ -32,6 +32,8 @@ If VR stops while BC2 remains open, select **Restart BC2 before launch**, or clo
 
 If startup fails after window activation, use **Report feedback → Save diagnostics for review** in 0.1.14 or newer and attach the reviewed ZIP. The old “Original BC2 exited” message could also mean the launcher could not verify the original process; it did not prove a crash or a headset incompatibility. An “unverified executable” message is a different check: support for that exact game build still needs verification. Switching headset runtimes does not resolve an executable-verification failure.
 
+If your Steam executable is rejected, try **Steam compatibility (experimental)** in 0.1.15. This saved option permits the reported Steam candidate to proceed through build-layout and native interface checks. It does not force SteamVR or change the selected OpenXR runtime. Other unrecognized executables still produce a diagnostic report. Steam gameplay, including generic weapon handling, needs a successful test on that build before it can be called supported.
+
 If 0.1.10 reports **“Generated assets must not be written into the game installation”**, the launcher may be installed below the game folder. The fix introduced in 0.1.11 remains included and permits its dedicated managed cache there. Installing the launcher directly into the game root or its stock `Dist`/`Package` folders remains unsupported. **You do not need to reinstall the game.**
 
 ## Controls and updates
@@ -42,19 +44,19 @@ Close BC2 before selecting **Check for updates** and **Install update**. Keep **
 
 **If the launcher reports a damaged package or an older updater cannot continue:** download the new Setup, run **Install.cmd**, and choose your **existing launcher folder containing `active.json`**. Repair replaces a damaged copy only after the replacement is fully verified, preserving your settings and a verified previous version.
 
-Updating from 0.1.13 preserves settings and retains 0.1.13 for rollback. The unchanged asset recipe reuses your existing valid cache.
+Updating from 0.1.14 preserves settings and retains 0.1.14 for rollback. The updated runtime recipe may prepare its local equipment/audio cache again on the next launch.
 
 ## What to expect
 
 The mod includes native stereo, tracked weapons and support hands, roomscale movement, physical equipment handling and manual reloads for supported weapons. The opening cloud correction has passed a headset check. Checkpoint 426 adds measured Nambu100 grip/aim data and native manual-magazine evidence.
 
-Earlier versions failed headset knife testing. In 0.1.12, an actual-game check using emulated controller input delivered a blade jab and reached the **Reach Trenches** objective in the same uninterrupted opening encounter. This establishes progression for that tested path. Physical-headset knife handling, the rest of the campaign and death/reload behavior still need separate acceptance. All three opening story cards were captured from the game, but their physical-headset presentation remains unverified.
+Earlier versions failed headset knife testing. In 0.1.12, an actual-game check using emulated controller input delivered a blade jab and reached **Reach Trenches**. Subsequent headset feedback confirmed killing the opening guards, seeing the story text and using manual reloads. That tester reached the scientist without a gamebreaking issue. Knife polish, the rest of the campaign and death/reload behavior still need work.
 
 Death/reload crashes have no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
 
 The included 0.1.8 startup fix removes a development-machine drive restriction from the native audio-cache readers. A tester's valid X: installation was rejected during VR startup; both readers now accept validated absolute local paths on the player's selected drive. Required audio hashes and formats remain checked. Startup and saved diagnostics also show the underlying native failure reason when available, rather than only `probe_exit:20`.
 
-Installer/update tests simulate different folder layouts and runtime selections; they do not emulate another GPU, headset connection or store executable. Actual EA/VDXR headset rendering remains unverified. The previous package-repair and per-resource preparation checks remain included.
+Installer/update tests simulate different folder layouts and runtime selections; they do not emulate another GPU, headset connection or store executable. A tester reported successful play through Virtual Desktop/VDXR, with low performance; broader compatibility remains under investigation. The previous package-repair and per-resource preparation checks remain included.
 
 ## Feedback
 
