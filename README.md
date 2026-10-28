@@ -1,67 +1,118 @@
 # BC2VR — Singleplayer Pre-alpha
 
-> **Experimental pre-alpha. Vehicle, destruction-rendering and death/reload
-> issues remain unresolved.** Testers have confirmed opening-encounter progression,
-> knife use and manual reloads in a headset. A complete campaign has not passed
-> acceptance. Multiplayer is unsupported.
+> **Experimental pre-alpha.** Testers have played the opening encounter in a headset
+> with knife use and manual reloads. A complete campaign has not passed acceptance.
+> Vehicles, destruction rendering and death/reload crashes remain unresolved.
+> Multiplayer is unsupported.
 
-An experimental VR mod for **Battlefield: Bad Company 2**, built on [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This separate repository provides the installer, updates and feedback tracker.
+An experimental VR mod for **Battlefield: Bad Company 2**, built on
+[FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR). This repository holds the
+installer, updates and feedback tracker. What changed in each version is on the
+[Releases](https://github.com/justiceofrip/BC2VR/releases) page.
 
-**0.1.15 adds an experimental Steam option and fixes a live-game verification failure.** The launcher could save an empty executable path at startup and then reject the running game; it now recovers that path from the original Windows process handle. The Steam option targets the executable reported by testers and retains native interface checks. Actual Steam gameplay and its complete weapon coverage remain unverified. The diagnostics-button fix is included; VR/gameplay binaries are unchanged.
+## Requirements
 
-The 0.1.12 knife corrections, opening story-text display and toggle crouch remain included. That version passed an actual-game check using emulated controllers through the opening guards to **Reach Trenches**, with all three opening story cards captured. Full-campaign and headset performance acceptance remain separate.
+- 64-bit Windows and your own supported BC2 installation, running Direct3D 11.
+- An OpenXR headset with motion controllers, connected through your PC streaming app.
+  SteamVR is the tested setup; a tester also reports play through Virtual Desktop/VDXR,
+  with low performance.
+- A local fixed drive of your choice, including C:. The launcher checks the space it
+  needs and keeps temporary files with the installation.
 
 ## Install and play
 
-You need 64-bit Windows, your own supported BC2 installation, Direct3D 11 and a working OpenXR headset with motion controllers. Connect your headset through your preferred PC streaming app and select its OpenXR runtime. SteamVR is the current tested headset setup. Install on a local fixed drive of your choice, including C:; the launcher checks the space needed and keeps temporary files with the installation.
+1. Download the latest **BC2VR-Setup** zip from
+   [Releases](https://github.com/justiceofrip/BC2VR/releases).
+2. Extract it, keep the inner **BC2VR-…-win64.zip** intact, and run **Install.cmd**.
+   First setup needs internet access for portable dependencies.
+3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select
+   `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
+4. Choose your campaign in the VR menu: point with the right controller and select with
+   its trigger.
 
-1. Download **BC2VR-Setup-0.1.15.zip** from [Releases](https://github.com/justiceofrip/BC2VR/releases).
-2. Extract it, keep the inner **BC2VR-0.1.15-win64.zip** intact, and run **Install.cmd**. First setup needs internet access for portable dependencies.
-3. Open the **BC2 VR** desktop shortcut, use **Choose game folder** to select `BFBC2Game.exe`, connect your headset and select **Launch BC2 in VR**.
-4. Choose your campaign in the VR menu. Point with the right controller and select with its trigger.
+The first launch prepares equipment and audio caches from your installed game. Python is
+bundled; the first asset preparation downloads a pinned FFmpeg audio decoder (about 77 MB)
+from its upstream GitHub release. No game executable, assets or saves are distributed.
 
-First launch prepares equipment and audio caches from your installed game. Python is bundled; the first asset preparation downloads a pinned FFmpeg audio decoder (about 77 MB) directly from its upstream GitHub release. Validation and launches with a complete asset cache do not download it. No game executable, assets or saves are distributed. The launcher checks the supported executable and selected OpenXR runtime before starting. An unverified build is reported with a fingerprint for feedback; this is not blanket support for every EA, Steam or retail executable. The launcher does not change your OpenXR runtime or game settings. **Stop VR** ends the mod session and leaves BC2 and your VR software open.
+The launcher checks the game executable and the selected OpenXR runtime before starting.
+An unverified build is reported with a fingerprint for feedback; that is not blanket
+support for every EA, Steam or retail executable. The launcher never changes your OpenXR
+runtime or game settings. **Stop VR** ends the mod session and leaves BC2 and your VR
+software open.
 
-## Startup help
+## Controls
 
-The chosen game path is shown above Launch. If settings cannot be read, use the offered recovery action; the original file is backed up before repair or reset.
+| Action | Input |
+| --- | --- |
+| Move / snap turn | Left stick / right stick |
+| Fire | Right trigger |
+| Weapon handling | Grips (supported weapons) |
+| Toggle crouch | Click and release the left stick |
+| Sprint | Hold Y |
+| Recenter | Hold both stick clicks for one second (keeps your crouch posture) |
+| Pause menu | Left menu button, or hold X+Y for half a second if the runtime reserves it |
 
-If the Direct3D 11 check fails, close BC2 and select `DxVersion=11` in its `Documents/BFBC2/settings.ini`, then retry. Keep the headset connected while the game reaches its main menu. Startup reports progress and waits for native VR input telemetry; it does not claim success merely because the game process opened. Use **Report feedback → Save diagnostics** when a check fails.
+## Updating
 
-If VR stops while BC2 remains open, select **Restart BC2 before launch**, or close BC2 normally and launch again. Wait for any cleanup message to finish. **You do not need to delete or reinstall BC2VR.** The desktop game resolution does not need to be 16:9 for menu pointing.
+Close BC2, then select **Check for updates → Install update** with **Include pre-alpha
+hotfixes** enabled. Settings and one previous version are kept; **Roll back** returns to
+it. The next launch may prepare the local equipment/audio cache again.
 
-If startup fails after window activation, use **Report feedback → Save diagnostics for review** in 0.1.14 or newer and attach the reviewed ZIP. The old “Original BC2 exited” message could also mean the launcher could not verify the original process; it did not prove a crash or a headset incompatibility. An “unverified executable” message is a different check: support for that exact game build still needs verification. Switching headset runtimes does not resolve an executable-verification failure.
+If the launcher reports a damaged package, or an older updater cannot continue: download
+the latest Setup, run **Install.cmd** and choose your **existing launcher folder (the one
+containing `active.json`)**. It replaces a damaged copy only after the replacement is
+verified, and keeps your settings and previous version.
 
-If your Steam executable is rejected, try **Steam compatibility (experimental)** in 0.1.15. This saved option permits the reported Steam candidate to proceed through build-layout and native interface checks. It does not force SteamVR or change the selected OpenXR runtime. Other unrecognized executables still produce a diagnostic report. Steam gameplay, including generic weapon handling, needs a successful test on that build before it can be called supported.
+## Troubleshooting
 
-If 0.1.10 reports **“Generated assets must not be written into the game installation”**, the launcher may be installed below the game folder. The fix introduced in 0.1.11 remains included and permits its dedicated managed cache there. Installing the launcher directly into the game root or its stock `Dist`/`Package` folders remains unsupported. **You do not need to reinstall the game.**
+You never need to delete or reinstall BC2 or BC2VR for the problems below.
 
-## Controls and updates
+- **Direct3D 11 check fails:** close BC2, set `DxVersion=11` in
+  `Documents/BFBC2/settings.ini`, then retry.
+- **Startup seems slow:** keep the headset connected until the game reaches its main
+  menu. Startup waits for native VR input before it reports success.
+- **VR stopped but BC2 is still open:** select **Restart BC2 before launch**, or close BC2
+  normally and launch again. Wait for any cleanup message to finish.
+- **Settings cannot be read:** use the offered recovery action; the original file is
+  backed up first.
+- **"Unverified executable":** support for that exact game build still needs
+  verification. Switching headset runtimes does not change this.
+- **Steam executable rejected:** enable **Steam compatibility (experimental)** and launch
+  normally. It keeps the native interface checks and does not force SteamVR. Gameplay on
+  Steam builds, including weapon handling, is not yet verified.
+- **"Generated assets must not be written into the game installation":** update to the
+  latest version. Installing the launcher directly into the game root or its stock
+  `Dist`/`Package` folders is unsupported.
+- **Anything else:** use **Report feedback → Save diagnostics for review** and attach the
+  ZIP (see below).
 
-Move with the left stick, snap turn with the right stick, fire with the right trigger, and use grips for supported weapon handling. Click and release the left thumbstick to toggle crouch; hold Y (the left secondary button) to sprint. Hold both stick clicks for one second to recenter; this chord preserves your chosen crouch posture. Open the pause menu with the left menu button; X+Y held for half a second is the fallback when the runtime reserves that button.
+The desktop game resolution does not need to be 16:9 for menu pointing.
 
-Close BC2 before selecting **Check for updates** and **Install update**. Keep **Include pre-alpha hotfixes** enabled. Settings and one previous package are retained; **Roll back** selects that previous version.
+## What works and what doesn't
 
-**If the launcher reports a damaged package or an older updater cannot continue:** download the new Setup, run **Install.cmd**, and choose your **existing launcher folder containing `active.json`**. Repair replaces a damaged copy only after the replacement is fully verified, preserving your settings and a verified previous version.
+Included: native stereo, tracked weapons and support hands, roomscale movement, physical
+equipment handling, and manual reloads for supported weapons.
 
-Updating from 0.1.14 preserves settings and retains 0.1.14 for rollback. The updated runtime recipe may prepare its local equipment/audio cache again on the next launch.
+Not finished: death/reload crashes (no accepted fix), vehicles, destruction rendering, the
+rest of the campaign after the opening, knife polish, extended play and reconnects,
+unsupported weapons, manual LMG reloads and some magnified scopes. Nambu launch/impact
+alignment and the recenter correction still need headset checks.
 
-## What to expect
-
-The mod includes native stereo, tracked weapons and support hands, roomscale movement, physical equipment handling and manual reloads for supported weapons. The opening cloud correction has passed a headset check. Checkpoint 426 adds measured Nambu100 grip/aim data and native manual-magazine evidence.
-
-Earlier versions failed headset knife testing. In 0.1.12, an actual-game check using emulated controller input delivered a blade jab and reached **Reach Trenches**. Subsequent headset feedback confirmed killing the opening guards, seeing the story text and using manual reloads. That tester reached the scientist without a gamebreaking issue. Knife polish, the rest of the campaign and death/reload behavior still need work.
-
-Death/reload crashes have no accepted fix. Nambu downstream launch and impact alignment remain unverified; the recenter correction still needs a headset check. Extended play, reconnects, unsupported weapons, manual LMG reloads and some magnified scopes remain unfinished.
-
-The included 0.1.8 startup fix removes a development-machine drive restriction from the native audio-cache readers. A tester's valid X: installation was rejected during VR startup; both readers now accept validated absolute local paths on the player's selected drive. Required audio hashes and formats remain checked. Startup and saved diagnostics also show the underlying native failure reason when available, rather than only `probe_exit:20`.
-
-Installer/update tests simulate different folder layouts and runtime selections; they do not emulate another GPU, headset connection or store executable. A tester reported successful play through Virtual Desktop/VDXR, with low performance; broader compatibility remains under investigation. The previous package-repair and per-resource preparation checks remain included.
+Automated tests cover installer and update layouts and runtime selection; they do not
+emulate other GPUs, headset connections or store executables.
 
 ## Feedback
 
-Use **Report feedback** in the launcher or [open an issue](https://github.com/justiceofrip/BC2VR/issues/new/choose). Include your headset/connection, version, mission, weapon and reproduction steps.
+Use **Report feedback** in the launcher or
+[open an issue](https://github.com/justiceofrip/BC2VR/issues/new/choose). Include your
+headset and connection, version, mission, weapon and steps to reproduce. Short videos
+with timestamps help with visual or interaction problems.
 
-Select **Report feedback → Save diagnostics for review** to create a small diagnostics ZIP from bounded text logs and build details. Explorer opens the folder; alternatively, select **Open logs → feedback** and find **BC2VR-diagnostics.zip**. Review **Report.txt** before attaching it yourself. Nothing uploads automatically; game assets, settings, screenshots and memory dumps are excluded. Short videos with timestamps are useful for visual or interaction problems.
+**Report feedback → Save diagnostics for review** creates a small ZIP from bounded text
+logs and build details, then opens its folder (also reachable via **Open logs →
+feedback**, file **BC2VR-diagnostics.zip**). Review **Report.txt** before attaching it.
+Nothing uploads automatically; game assets, settings, screenshots and memory dumps are
+excluded.
 
-This is an unofficial community mod. Framework source and development are in [FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR).
+This is an unofficial community mod. Framework source and development are in
+[FrostbiteVR](https://github.com/justiceofrip/FrostbiteVR).
